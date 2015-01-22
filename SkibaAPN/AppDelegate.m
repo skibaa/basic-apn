@@ -16,6 +16,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //register for local notifications
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:
+         [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    
+    //register for remote notifications
+    if ([UIApplication instancesRespondToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];    }
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -40,6 +50,51 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    //placeholder
+    UIAlertView *alert = [[UIAlertView alloc]
+                                    initWithTitle:@"Local notifications" message:@"Registered for local notifications" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display the Hello World Message
+    [alert show];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    //placeholder
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Remote notifications" message:@"Registered for remote notifications" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display the Hello World Message
+    [alert show];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //placeholder
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Remote notifications" message:[error description] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display the Hello World Message
+    [alert show];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //placeholder
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Remote notification" message:@"Received remote notification" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display the Hello World Message
+    [alert show];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    //placeholder
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Local notification" message:@"Received local notification" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display the Hello World Message
+    [alert show];
 }
 
 @end

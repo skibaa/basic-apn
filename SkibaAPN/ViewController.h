@@ -10,6 +10,16 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *notificationTextField;
+
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+
+@property (strong, nonatomic) IBOutlet UISegmentedControl *localRemoteSegmented;
+
+@property (strong, nonatomic) IBOutlet UIButton *sendButton;
+
+-(IBAction)showMessage;
+
 
 @end
 

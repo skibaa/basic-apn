@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,19 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-YJ-5jn">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the notification message here" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-YJ-5jn">
                                 <rect key="frame" x="16" y="49" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit the text below and schedule its delivery locally or remotely" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GG-Fz-rVG">
-                                <rect key="frame" x="16" y="20" width="482" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="S3a-AL-a9Y">
-                                <rect key="frame" x="0.0" y="87" width="600" height="162"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="S3a-AL-a9Y">
+                                <rect key="frame" x="16" y="87" width="568" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="443623197.36559302">
                                     <!--2015-01-22 12:39:57 +0000-->
                                 </date>
@@ -36,23 +32,51 @@
                                     <!--2014-01-01 11:00:00 +0000-->
                                 </date>
                             </datePicker>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gqj-Um-Bz6">
-                                <rect key="frame" x="535" y="257" width="51" height="31"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remote delivery through APN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA8-qj-a81">
-                                <rect key="frame" x="300" y="262" width="227" height="26"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-jQ-bkv">
+                                <rect key="frame" x="262" y="570" width="78" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Send Now!"/>
+                                <connections>
+                                    <action selector="showMessage" destination="vXZ-lx-hvc" eventType="touchUpInside" id="29n-fb-8eL"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Uzh-pW-7ed">
+                                <rect key="frame" x="239" y="257" width="123" height="29"/>
+                                <segments>
+                                    <segment title="Local"/>
+                                    <segment title="Remote"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit the text below and schedule its delivery locally or remotely" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GG-Fz-rVG">
+                                <rect key="frame" x="16" y="20" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-jQ-bkv">
-                                <rect key="frame" x="264" y="550" width="78" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Send Now!"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="S3a-AL-a9Y" secondAttribute="trailing" id="4o8-gW-Lld"/>
+                            <constraint firstItem="S3a-AL-a9Y" firstAttribute="top" secondItem="f4X-YJ-5jn" secondAttribute="bottom" constant="8" id="7Gv-az-sbx"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Kw2-jQ-bkv" secondAttribute="bottom" id="7ig-B9-SaD"/>
+                            <constraint firstItem="S3a-AL-a9Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="AOH-0v-gIv"/>
+                            <constraint firstItem="Uzh-pW-7ed" firstAttribute="top" secondItem="S3a-AL-a9Y" secondAttribute="bottom" constant="8" id="CXW-9L-qHu"/>
+                            <constraint firstItem="f4X-YJ-5jn" firstAttribute="top" secondItem="5GG-Fz-rVG" secondAttribute="bottom" constant="8" id="IQw-mH-uka"/>
+                            <constraint firstItem="f4X-YJ-5jn" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="KlK-V9-e8D"/>
+                            <constraint firstItem="Uzh-pW-7ed" firstAttribute="centerX" secondItem="Kw2-jQ-bkv" secondAttribute="centerXWithinMargins" id="Ly7-ze-nma"/>
+                            <constraint firstItem="5GG-Fz-rVG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="czK-uC-RbA"/>
+                            <constraint firstItem="f4X-YJ-5jn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="fAR-Lb-W6D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5GG-Fz-rVG" secondAttribute="trailing" id="rfR-au-WSj"/>
+                            <constraint firstItem="5GG-Fz-rVG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="te6-yS-sfh"/>
+                            <constraint firstItem="Uzh-pW-7ed" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="yaf-aQ-DuS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="S3a-AL-a9Y" id="Lrz-0D-P8Z"/>
+                        <outlet property="localRemoteSegmented" destination="Uzh-pW-7ed" id="c9O-0e-59Y"/>
+                        <outlet property="notificationTextField" destination="f4X-YJ-5jn" id="z61-fS-o5j"/>
+                        <outlet property="sendButton" destination="Kw2-jQ-bkv" id="4YP-m3-XWh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
